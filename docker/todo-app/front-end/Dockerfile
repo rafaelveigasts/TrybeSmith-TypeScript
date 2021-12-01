@@ -1,1 +1,1 @@
-FROM node:14-alpine AS build
+FROM node:14-alpine AS todofrontend
