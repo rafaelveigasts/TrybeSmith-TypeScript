@@ -3,22 +3,21 @@ import connection from './connection';
 
 import { UserSemID, UserWithID } from '../interfaces/User';
 
-const createUser = async (user: UserSemID): Promise<UserSemID> => {
+const createUser = async (user: UserSemID): Promise<UserWithID> => {
   const { username, classe, level, password } = user;
   const [result] = await connection.execute<ResultSetHeader>(
     'INSERT INTO Trybesmith.Users (username, classe, level, password) VALUES (?, ?, ?, ?)',
     [username, classe, level, password],
   );
 
-  const { insertId: id } = result;
-
   const newUser: UserWithID = {
-    id,
+    id: result.insertId,
     username,
     classe,
     level,
     password,
   };
+
   return newUser;
 };
 
