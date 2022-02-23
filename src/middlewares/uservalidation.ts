@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import StatusCode from '../enums/StatusCode';
 
-const classValidation = (req: Request, res: Response, next: NextFunction) => {
+export const classValidation = (req: Request, res: Response, next: NextFunction) => {
   const { classe } = req.body;
   
   if (classe === undefined) {
@@ -16,12 +16,12 @@ const classValidation = (req: Request, res: Response, next: NextFunction) => {
 
   if (classe.length <= 2) {
     return res.status(StatusCode.UNPROCCESABLE_ENTITY).json({
-      error: 'Classe must be at least 2 characters' });
+      error: 'Classe must be longer than 2 characters' });
   }
   next();
 };
 
-const levelValidation = (req: Request, res: Response, next: NextFunction) => {
+export const levelValidation = (req: Request, res: Response, next: NextFunction) => {
   const { level } = req.body;
 
   if (level === undefined) {
@@ -41,7 +41,7 @@ const levelValidation = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-const nameValidation = (req: Request, res: Response, next: NextFunction) => {
+export const nameValidation = (req: Request, res: Response, next: NextFunction) => {
   const { username } = req.body;
 
   if (username === undefined) {
@@ -56,12 +56,12 @@ const nameValidation = (req: Request, res: Response, next: NextFunction) => {
 
   if (username.length <= 2) {
     return res.status(StatusCode.UNPROCCESABLE_ENTITY).json({
-      error: 'Username must be at least 2 characters' });
+      error: 'Username must be longer than 2 characters' });
   }
   next();
 };
 
-const passwordValidation = (req: Request, res: Response, next: NextFunction) => {
+export const passwordValidation = (req: Request, res: Response, next: NextFunction) => {
   const { password } = req.body;
 
   if (password === undefined) {
@@ -76,14 +76,7 @@ const passwordValidation = (req: Request, res: Response, next: NextFunction) => 
 
   if (password.length < 8) {
     return res.status(StatusCode.UNPROCCESABLE_ENTITY).json({
-      error: 'Password must be at least 7 characters' });
+      error: 'Password must be longer than 7 characters' });
   }
   next();
-};
-
-export default {
-  nameValidation,
-  classValidation,
-  levelValidation,
-  passwordValidation,
 };

@@ -10,6 +10,11 @@ const key: jwt.Secret = process.env.SECRET || 'chave';
 
 const createUser = async (req: Request, res: Response) => {
   const userData = req.body;
+  console.log(userData.username);
+  console.log(userData.password);
+  console.log(userData.classe);
+  console.log(userData.level);
+  
   try {
     const newUser = await UserService.createUser(userData);
     const token = jwt.sign({ username: newUser.username }, key);

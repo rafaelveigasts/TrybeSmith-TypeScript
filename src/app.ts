@@ -13,8 +13,8 @@ app.use(express.json());
 app.post(
   '/users',
   nameValidation,
-  classValidation,
   levelValidation,
+  classValidation,
   passwordValidation,
   createUser,
 );
