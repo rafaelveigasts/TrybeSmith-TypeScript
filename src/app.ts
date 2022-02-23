@@ -6,7 +6,7 @@ import {
   levelValidation,
   passwordValidation,
 } from './middlewares/uservalidation';
-import userLogin from './Controller/Login';
+import userLogin from './Controller/LoginController';
 
 const app = express();
 
