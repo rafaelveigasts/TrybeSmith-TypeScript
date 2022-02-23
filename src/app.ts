@@ -6,6 +6,7 @@ import {
   levelValidation,
   passwordValidation,
 } from './middlewares/uservalidation';
+import userLogin from './Controller/Login';
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.post(
   passwordValidation,
   createUser,
 );
+app.post('/login', nameValidation, passwordValidation, userLogin);
 
 export default app;
