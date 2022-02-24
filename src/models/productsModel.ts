@@ -20,4 +20,4 @@ const createProduct = async (
   return newProduct;
 };
 
-export default createProduct;
+export default { createProduct };
