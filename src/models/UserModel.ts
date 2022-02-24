@@ -23,12 +23,13 @@ const createUser = async (user: UserSemID): Promise<UserWithID> => {
 
 const getUserByUsername = async (user: UserSemID) => {
   const { username, password } = user;
-  const [result] = await connection.execute<ResultSetHeader>(
-    'SELECT * FROM Trybesmith.Users WHERE username = ? AND password = ?',
+  const [result] = await connection.execute(
+    'SELECT username, password FROM Trybesmith.Users WHERE username = ? AND password = ?',
     [username, password],
   );
 
-  const founduser = result;
+  const [founduser] = result as UserSemID[];
+  
   if (!founduser) return null;
 
   return founduser;
