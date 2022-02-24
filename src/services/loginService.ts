@@ -2,11 +2,7 @@ import UserModel from '../models/UserModel';
 
 import StatusCode from '../enums/StatusCode';
 import { UserSemID } from '../interfaces/User';
-
-export type LoginError = {
-  code: number;
-  message: { error: string };
-};
+import { LoginError } from '../interfaces/LoginError';
 
 const userLogin = async (user: UserSemID) => {
   const userFound = await UserModel.getUserByUsername(user);

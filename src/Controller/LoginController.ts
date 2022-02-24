@@ -2,7 +2,8 @@ import { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import StatusCode from '../enums/StatusCode';
-import userlogin, { LoginError } from '../services/loginService';
+import userlogin from '../services/loginService';
+import { LoginError } from '../interfaces/LoginError';
 
 dotenv.config();
 
@@ -21,4 +22,4 @@ const login = async (req: Request, res: Response) => {
 };
 
 export default login;
-// pq na linha 13 se eu passar username ele quebra?
+// pq na linha 13 se eu passar username ele quebra? pq o username só é definido depois que o usuário efetua a submissão dos dados, antes disso ele é undefined.
