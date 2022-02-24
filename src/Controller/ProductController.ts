@@ -10,7 +10,8 @@ const createProduct = async (req: Request, res: Response) => {
 
   try {
     const newProduct = await productService.createProduct(productData);
-    res.status(StatusCode.CREATED).send(newProduct);
+    const { id, name, amount } = newProduct;
+    res.status(StatusCode.CREATED).json({ item: { id, name, amount } });
   } catch (err) {
     res.status(StatusCode.BAD_REQUEST).send(err);
   }
