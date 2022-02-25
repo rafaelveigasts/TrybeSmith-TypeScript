@@ -18,4 +18,9 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
-export default createProduct;
+const getAllProducts = async (req: Request, res: Response) => {
+  const productData = await productService.getAllProducts();
+  res.status(StatusCode.OK).json(productData);
+};
+
+export default { createProduct, getAllProducts };
