@@ -7,7 +7,7 @@ import {
   passwordValidation,
 } from './middlewares/uservalidation';
 import login from './Controller/LoginController';
-import createProduct from './Controller/ProductController';
+import { createProduct, getAllProducts } from './Controller/ProductController';
 import tokenValidation from './middlewares/tokenValidation';
 import {
   productNameValidation,
@@ -34,5 +34,7 @@ app.post(
   productAmountValidation,
   createProduct,
 );
+
+app.get('/products', tokenValidation, getAllProducts);
 
 export default app;

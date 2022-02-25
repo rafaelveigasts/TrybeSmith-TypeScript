@@ -6,7 +6,7 @@ import { ProductWithID } from '../interfaces/Product';
 
 dotenv.config();
 
-const createProduct = async (req: Request, res: Response) => {
+export const createProduct = async (req: Request, res: Response) => {
   const productData = req.body;
 
   try {
@@ -18,9 +18,7 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
-const getAllProducts = async (req: Request, res: Response) => {
+export const getAllProducts = async (req: Request, res: Response) => {
   const productData = await productService.getAllProducts();
   res.status(StatusCode.OK).json(productData);
 };
-
-export default { createProduct, getAllProducts };
