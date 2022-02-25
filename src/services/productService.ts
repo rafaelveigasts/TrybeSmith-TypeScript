@@ -8,6 +8,12 @@ const createProduct = async (
   return products;
 };
 
+const getAllProducts = async () => {
+  const products = await ProductModel.getAllProducts();
+  return products;
+};
+
 export default {
   createProduct,
+  getAllProducts,
 };

@@ -27,4 +27,6 @@ const getAllProducts = async (): Promise<ProductWithID[]> => {
   return results as ProductWithID[];
 };
 
+// não precisa do resultsetheader pois não vamos usar o id: insertedId
+
 export default { createProduct, getAllProducts };
