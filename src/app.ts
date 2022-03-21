@@ -13,6 +13,8 @@ import {
   productNameValidation,
   productAmountValidation,
 } from './middlewares/productValidation';
+import orderValidation from './middlewares/orderValidation';
+import createOrder from './Controller/OrderController';
 
 const app = express();
 
@@ -36,5 +38,7 @@ app.post(
 );
 
 app.get('/products', tokenValidation, getAllProducts);
+
+app.post('orders', tokenValidation, orderValidation, createOrder);
 
 export default app;

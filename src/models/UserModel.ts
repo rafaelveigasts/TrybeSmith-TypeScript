@@ -29,6 +29,8 @@ const getUserByUsername = async (user: UserSemID) => {
   );
 
   const [founduser] = result as UserSemID[];
+  // console.log('founduser', founduser);
+  // console.log('result', result);
   
   if (!founduser) return null;
 
